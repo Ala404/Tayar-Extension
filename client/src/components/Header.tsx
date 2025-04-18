@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Bell, Search, X } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { LanguageToggle } from '@/components/LanguageToggle';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -9,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ArticleWithRelations } from '@/types';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Badge } from '@/components/ui/badge';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   user?: {
@@ -25,6 +27,7 @@ export function Header({ user }: HeaderProps) {
   const [location, navigate] = useLocation();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [showNotifications, setShowNotifications] = useState(false);
+  const { t } = useTranslation();
 
   // Fetch search results
   const { data: searchResults, isFetching } = useQuery<ArticleWithRelations[]>({
@@ -129,7 +132,7 @@ export function Header({ user }: HeaderProps) {
                 ref={searchInputRef}
                 type="text"
                 className="w-full py-2 pl-10 pr-14 text-sm bg-gray-100 dark:bg-gray-800 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-                placeholder="Search for topics, articles, or sources..."
+                placeholder={t('common.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setIsSearchActive(true)}
@@ -233,6 +236,8 @@ export function Header({ user }: HeaderProps) {
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           
+          <LanguageToggle />
+          
           <Popover open={showNotifications} onOpenChange={setShowNotifications}>
             <PopoverTrigger asChild>
               <Button 
@@ -253,8 +258,8 @@ export function Header({ user }: HeaderProps) {
             </PopoverTrigger>
             <PopoverContent className="w-80 p-0" align="end">
               <div className="flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700">
-                <h3 className="font-semibold">Notifications</h3>
-                <Button variant="ghost" size="sm" className="text-xs">Mark all as read</Button>
+                <h3 className="font-semibold">{t('common.notifications')}</h3>
+                <Button variant="ghost" size="sm" className="text-xs">{t('common.markAllAsRead')}</Button>
               </div>
               
               <div className="max-h-[60vh] overflow-y-auto">
@@ -279,7 +284,7 @@ export function Header({ user }: HeaderProps) {
               
               <div className="p-2 text-center border-t border-gray-200 dark:border-gray-700">
                 <Link href="/notifications">
-                  <Button variant="ghost" size="sm" className="text-xs w-full">View all notifications</Button>
+                  <Button variant="ghost" size="sm" className="text-xs w-full">{t('common.viewAll')}</Button>
                 </Link>
               </div>
             </PopoverContent>
@@ -306,7 +311,7 @@ export function Header({ user }: HeaderProps) {
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
               </svg>
-              <span>New Post</span>
+              <span>{t('common.newPost')}</span>
             </Button>
           </Link>
         </div>
