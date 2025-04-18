@@ -55,3 +55,17 @@ export function getTagColor(color: string): {bg: string, text: string} {
     text: 'text-white'
   };
 }
+
+export function stripHtmlTags(html: string): string {
+  if (!html) return '';
+  
+  // Create a temporary DOM element
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+  
+  // Get the text content
+  const plainText = temp.textContent || temp.innerText || '';
+  
+  // Return cleaned text
+  return plainText.trim();
+}

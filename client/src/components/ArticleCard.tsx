@@ -5,9 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ArticleWithRelations } from '@/types';
-import { formatTimeAgo } from '@/lib/utils';
+import { formatTimeAgo, stripHtmlTags } from '@/lib/utils';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 interface ArticleCardProps {
   article: ArticleWithRelations;
@@ -17,6 +18,7 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, userId, className = '' }: ArticleCardProps) {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [isBookmarked, setIsBookmarked] = useState(article.bookmarked || false);
   const [reaction, setReaction] = useState({
     likes: article.reactions?.likes || 0,
@@ -29,8 +31,8 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
     
     if (!userId) {
       toast({
-        title: "Authentication required",
-        description: "Please login to bookmark articles",
+        title: t('common.authRequired'),
+        description: t('common.loginToBookmark'),
         variant: "destructive"
       });
       return;
@@ -45,8 +47,8 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
         });
         setIsBookmarked(true);
         toast({
-          title: "Article bookmarked",
-          description: "This article has been added to your bookmarks"
+          title: t('common.articleBookmarked'),
+          description: t('common.articleAddedToBookmarks')
         });
       } else {
         await apiRequest('DELETE', '/api/bookmarks', {
@@ -55,14 +57,14 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
         });
         setIsBookmarked(false);
         toast({
-          title: "Bookmark removed",
-          description: "This article has been removed from your bookmarks"
+          title: t('common.bookmarkRemoved'),
+          description: t('common.articleRemovedFromBookmarks')
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to update bookmark",
+        title: t('common.error'),
+        description: t('common.bookmarkUpdateFailed'),
         variant: "destructive"
       });
     }
@@ -74,8 +76,8 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
     
     if (!userId) {
       toast({
-        title: "Authentication required",
-        description: "Please login to like articles",
+        title: t('common.authRequired'),
+        description: t('common.loginToLike'),
         variant: "destructive"
       });
       return;
@@ -148,7 +150,7 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
         </h3>
         
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
-          {article.description}
+          {stripHtmlTags(article.description)}
         </p>
         
         {article.url && (
@@ -159,7 +161,7 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
             className="inline-block text-xs text-secondary hover:underline mb-4"
             onClick={(e) => e.stopPropagation()}
           >
-            Read original article at {article.source.name}
+            {t('article.readOriginal', { source: article.source.name })}
           </a>
         )}
         
