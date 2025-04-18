@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { 
   Home, Users, Compass, Clock, Settings, 
-  ChevronDown, Bookmark, Folder, Plus 
+  ChevronDown, Bookmark, Folder, Plus,
+  Rss, Globe, Cpu
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -37,6 +38,7 @@ export function Sidebar() {
     { label: 'Following', icon: <Users className="w-5 h-5 mr-3 text-gray-500" />, link: '/following' },
     { label: 'Explore', icon: <Compass className="w-5 h-5 mr-3 text-gray-500" />, link: '/explore' },
     { label: 'History', icon: <Clock className="w-5 h-5 mr-3 text-gray-500" />, link: '/history' },
+    { label: 'Tech Sources', icon: <Rss className="w-5 h-5 mr-3 text-gray-500" />, link: '/tech-sources' },
     { label: 'Settings', icon: <Settings className="w-5 h-5 mr-3 text-gray-500" />, link: '/settings' },
   ];
   
@@ -73,10 +75,12 @@ export function Sidebar() {
   return (
     <aside className="hidden md:flex md:flex-col w-64 border-r border-gray-200 dark:border-gray-800 overflow-y-auto">
       <div className="p-4">
-        <Button className="w-full flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-accent hover:bg-secondary rounded-lg transition-colors">
-          <Plus className="w-4 h-4 mr-2" />
-          <span>New Post</span>
-        </Button>
+        <Link href="/new-post">
+          <Button className="w-full flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-accent hover:bg-secondary rounded-lg transition-colors">
+            <Plus className="w-4 h-4 mr-2" />
+            <span>New Post</span>
+          </Button>
+        </Link>
       </div>
       
       <nav className="flex-1 px-2 py-2 space-y-1">
@@ -101,24 +105,26 @@ export function Sidebar() {
             {!section.collapsible || !collapsedSections[section.title] ? (
               <div className="space-y-1">
                 {section.items.map((item, j) => (
-                  <Link key={j} href={item.link}>
-                    <a className={cn(
-                      "sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                      isActive(item.link)
-                        ? "text-text dark:text-gray-200 bg-gray-100 dark:bg-gray-800"
-                        : "text-text dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    )}>
-                      {item.icon || (
-                        item.color 
-                          ? <span className={`w-2 h-2 mr-3 ${item.color} rounded-full`}></span>
-                          : <span className="text-xs font-medium mr-3 py-1 px-2 rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">{item.label}</span>
-                      )}
-                      
-                      {(item.icon || item.color) && <span>{item.label}</span>}
-                      
-                      {item.count && <span className="ml-auto text-xs text-gray-500">{item.count}</span>}
-                    </a>
-                  </Link>
+                  <div key={j}>
+                    <Link href={item.link}>
+                      <div className={cn(
+                        "sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors cursor-pointer",
+                        isActive(item.link)
+                          ? "text-text dark:text-gray-200 bg-gray-100 dark:bg-gray-800"
+                          : "text-text dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      )}>
+                        {item.icon || (
+                          item.color 
+                            ? <span className={`w-2 h-2 mr-3 ${item.color} rounded-full`}></span>
+                            : <span className="text-xs font-medium mr-3 py-1 px-2 rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">{item.label}</span>
+                        )}
+                        
+                        {(item.icon || item.color) && <span>{item.label}</span>}
+                        
+                        {item.count && <span className="ml-auto text-xs text-gray-500">{item.count}</span>}
+                      </div>
+                    </Link>
+                  </div>
                 ))}
               </div>
             ) : null}

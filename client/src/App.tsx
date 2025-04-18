@@ -12,6 +12,8 @@ import History from "@/pages/History";
 import Bookmarks from "@/pages/Bookmarks";
 import Settings from "@/pages/Settings";
 import ArticleView from "@/pages/ArticleView";
+import NewPost from "@/pages/NewPost";
+import TechSources from "@/pages/TechSources";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -24,6 +26,8 @@ function Router() {
       <Route path="/bookmarks" component={Bookmarks} />
       <Route path="/settings" component={Settings} />
       <Route path="/article/:id" component={ArticleView} />
+      <Route path="/new-post" component={NewPost} />
+      <Route path="/tech-sources" component={TechSources} />
       <Route component={NotFound} />
     </Switch>
   );
