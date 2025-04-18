@@ -150,7 +150,7 @@ export default function Profile() {
                     
                     {mockUser.github && (
                       <div className="flex items-center">
-                        <GitHub className="w-4 h-4 mr-1.5" />
+                        <Github className="w-4 h-4 mr-1.5" />
                         <a href={`https://github.com/${mockUser.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-secondary">{mockUser.github}</a>
                       </div>
                     )}
