@@ -15,6 +15,7 @@ import ArticleView from "@/pages/ArticleView";
 import NewPost from "@/pages/NewPost";
 import TechSources from "@/pages/TechSources";
 import SearchResults from "@/pages/SearchResults";
+import Profile from "@/pages/Profile";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/new-post" component={NewPost} />
       <Route path="/tech-sources" component={TechSources} />
       <Route path="/search" component={SearchResults} />
+      <Route path="/profile" component={Profile} />
       <Route component={NotFound} />
     </Switch>
   );

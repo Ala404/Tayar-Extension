@@ -39,9 +39,7 @@ export default function History() {
   // Clear history mutation
   const clearHistoryMutation = useMutation({
     mutationFn: async () => {
-      await apiRequest(`/api/users/${userId}/history`, {
-        method: 'DELETE',
-      });
+      return await apiRequest('DELETE', `/api/users/${userId}/history`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/users/${userId}/history`] });
@@ -86,10 +84,31 @@ export default function History() {
               </div>
               
               <div className="flex items-center space-x-3">
-                <Button variant="outline" size="sm" className="text-sm">
-                  <Trash2 className="w-4 h-4 mr-2" />
-                  Clear History
-                </Button>
+                <AlertDialog open={clearDialogOpen} onOpenChange={setClearDialogOpen}>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="outline" size="sm" className="text-sm">
+                      <Trash2 className="w-4 h-4 mr-2" />
+                      Clear History
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Clear Reading History</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to clear your entire reading history? This action cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction 
+                        onClick={handleClearHistory}
+                        className="bg-red-500 hover:bg-red-600"
+                      >
+                        {clearHistoryMutation.isPending ? "Clearing..." : "Clear History"}
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </div>
             
@@ -101,7 +120,7 @@ export default function History() {
               <>
                 {historyArticles.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {historyArticles.map((article) => (
+                    {uniqueArticles.map((article) => (
                       <ArticleCard 
                         key={article.id} 
                         article={article} 
