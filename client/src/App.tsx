@@ -14,6 +14,7 @@ import Settings from "@/pages/Settings";
 import ArticleView from "@/pages/ArticleView";
 import NewPost from "@/pages/NewPost";
 import TechSources from "@/pages/TechSources";
+import SearchResults from "@/pages/SearchResults";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/article/:id" component={ArticleView} />
       <Route path="/new-post" component={NewPost} />
       <Route path="/tech-sources" component={TechSources} />
+      <Route path="/search" component={SearchResults} />
       <Route component={NotFound} />
     </Switch>
   );
