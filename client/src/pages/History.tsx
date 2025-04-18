@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Header } from '@/components/Header';
 import { Sidebar } from '@/components/Sidebar';
 import { MobileNavbar } from '@/components/MobileNavbar';
@@ -7,13 +7,63 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { Button } from '@/components/ui/button';
 import { Loader2, History as HistoryIcon, Trash2 } from 'lucide-react';
 import { ArticleWithRelations } from '@/types';
+import { useToast } from '@/hooks/use-toast';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { apiRequest } from '@/lib/queryClient';
 
 export default function History() {
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+  const [clearDialogOpen, setClearDialogOpen] = useState(false);
   const userId = 1; // TODO: Replace with actual user data once auth is implemented
   
   const { data: historyArticles = [], isLoading, refetch } = useQuery<ArticleWithRelations[]>({
     queryKey: [`/api/users/${userId}/history`],
   });
+  
+  // Remove duplicate articles (keep only one instance of each article)
+  const uniqueArticles = Array.from(
+    new Map(historyArticles.map(article => [article.id, article])).values()
+  );
+  
+  // Clear history mutation
+  const clearHistoryMutation = useMutation({
+    mutationFn: async () => {
+      await apiRequest(`/api/users/${userId}/history`, {
+        method: 'DELETE',
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [`/api/users/${userId}/history`] });
+      toast({
+        title: "History cleared",
+        description: "Your reading history has been cleared successfully.",
+      });
+      setClearDialogOpen(false);
+    },
+    onError: (error) => {
+      toast({
+        title: "Failed to clear history",
+        description: "An error occurred while clearing your reading history.",
+        variant: "destructive",
+      });
+    }
+  });
+  
+  // Handle clear history
+  const handleClearHistory = () => {
+    clearHistoryMutation.mutate();
+  };
   
   const mockUser = {
     id: userId,

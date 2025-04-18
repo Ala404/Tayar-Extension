@@ -48,6 +48,8 @@ export interface IStorage {
   // Reading History operations
   getReadingHistory(userId: number): Promise<ArticleWithRelations[]>;
   addToReadingHistory(historyEntry: InsertReadingHistory): Promise<ReadingHistory>;
+  updateReadingHistory(historyEntry: InsertReadingHistory): Promise<ReadingHistory>;
+  clearReadingHistory(userId: number): Promise<boolean>;
 
   // Reaction operations
   getReactionsByArticleId(articleId: number): Promise<{ likes: number; comments: number }>;
@@ -299,6 +301,38 @@ export class MemStorage implements IStorage {
     const historyEntry: ReadingHistory = { ...insertHistory, id };
     this.readingHistory.set(id, historyEntry);
     return historyEntry;
+  }
+  
+  async updateReadingHistory(historyData: InsertReadingHistory): Promise<ReadingHistory> {
+    // Find existing entry
+    const existingEntry = Array.from(this.readingHistory.values()).find(
+      history => history.userId === historyData.userId && history.articleId === historyData.articleId
+    );
+    
+    if (!existingEntry) {
+      // If no existing entry, create a new one
+      return this.addToReadingHistory(historyData);
+    }
+    
+    // Update viewedAt timestamp
+    const updatedEntry: ReadingHistory = {
+      ...existingEntry,
+      viewedAt: historyData.viewedAt
+    };
+    
+    this.readingHistory.set(existingEntry.id, updatedEntry);
+    return updatedEntry;
+  }
+  
+  async clearReadingHistory(userId: number): Promise<boolean> {
+    const historyEntries = Array.from(this.readingHistory.values())
+      .filter(history => history.userId === userId);
+    
+    for (const entry of historyEntries) {
+      this.readingHistory.delete(entry.id);
+    }
+    
+    return true;
   }
 
   // Reaction operations
