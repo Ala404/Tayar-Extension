@@ -1,0 +1,63 @@
+{
+  "common": {
+    "myFeed": "خلاصتي",
+    "following": "المتابعة",
+    "explore": "استكشاف",
+    "history": "التاريخ",
+    "techSources": "مصادر التقنية",
+    "settings": "الإعدادات",
+    "customFeeds": "خلاصات مخصصة",
+    "bookmarks": "المفضلة",
+    "popularTags": "الوسوم الشائعة",
+    "newPost": "منشور جديد",
+    "search": "ابحث عن مواضيع، مقالات، أو مصادر...",
+    "notifications": "الإشعارات",
+    "markAllAsRead": "تعليم الكل كمقروء",
+    "viewAll": "عرض الكل",
+    "loadMore": "تحميل المزيد من المقالات",
+    "clearHistory": "مسح التاريخ"
+  },
+  "article": {
+    "readTime": "{{count}} دقيقة للقراءة",
+    "comments": "التعليقات",
+    "noComments": "لا توجد تعليقات بعد",
+    "leaveComment": "اترك تعليقاً...",
+    "share": "مشاركة",
+    "bookmark": "إضافة للمفضلة",
+    "removeBookmark": "إزالة من المفضلة",
+    "readMore": "قراءة المزيد"
+  },
+  "feed": {
+    "sortBy": "الترتيب حسب",
+    "sortAll": "الكل",
+    "sortPopular": "الأكثر شعبية",
+    "sortRecent": "الأحدث",
+    "refresh": "تحديث",
+    "empty": "لم يتم العثور على مقالات",
+    "emptyDescription": "حاول تعديل الفلاتر أو كلمات البحث"
+  },
+  "profile": {
+    "posts": "المنشورات",
+    "bookmarks": "المفضلة",
+    "readingHistory": "تاريخ القراءة",
+    "editProfile": "تعديل الملف الشخصي",
+    "joined": "انضم في",
+    "noPosts": "لا توجد منشورات بعد",
+    "noPostsDescription": "لم تنشر أي منشورات بعد. شارك معرفتك وخبراتك مع المجتمع!",
+    "createPost": "إنشاء منشور جديد",
+    "noBookmarks": "لا توجد مفضلات بعد",
+    "noBookmarksDescription": "لم تقم بإضافة أي مقالات للمفضلة بعد. ابحث عن محتوى مثير للاهتمام واحفظه لوقت لاحق.",
+    "noHistory": "لا يوجد تاريخ قراءة",
+    "noHistoryDescription": "لم تقرأ أي مقالات بعد. ابدأ بالاستكشاف لبناء تاريخ القراءة الخاص بك."
+  },
+  "history": {
+    "empty": "لا يوجد تاريخ قراءة بعد",
+    "emptyDescription": "المقالات التي تقرأها ستظهر هنا. ابدأ بالاستكشاف لبناء تاريخ القراءة الخاص بك.",
+    "exploreArticles": "استكشاف المقالات"
+  },
+  "error": {
+    "notFound": "الصفحة غير موجودة",
+    "notFoundDescription": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "backHome": "العودة للصفحة الرئيسية"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "common": {
+    "myFeed": "Mon Flux",
+    "following": "Abonnements",
+    "explore": "Explorer",
+    "history": "Historique",
+    "techSources": "Sources Tech",
+    "settings": "Paramètres",
+    "customFeeds": "Flux Personnalisés",
+    "bookmarks": "Favoris",
+    "popularTags": "Tags Populaires",
+    "newPost": "Nouvel Article",
+    "search": "Rechercher des sujets, articles ou sources...",
+    "notifications": "Notifications",
+    "markAllAsRead": "Marquer tout comme lu",
+    "viewAll": "Voir tout",
+    "loadMore": "Charger Plus d'Articles",
+    "clearHistory": "Effacer l'Historique"
+  },
+  "article": {
+    "readTime": "{{count}} min de lecture",
+    "comments": "Commentaires",
+    "noComments": "Pas encore de commentaires",
+    "leaveComment": "Laisser un commentaire...",
+    "share": "Partager",
+    "bookmark": "Ajouter aux favoris",
+    "removeBookmark": "Retirer des favoris",
+    "readMore": "Lire Plus"
+  },
+  "feed": {
+    "sortBy": "Trier par",
+    "sortAll": "Tous",
+    "sortPopular": "Populaires",
+    "sortRecent": "Récents",
+    "refresh": "Actualiser",
+    "empty": "Aucun article trouvé",
+    "emptyDescription": "Essayez d'ajuster vos filtres ou termes de recherche"
+  },
+  "profile": {
+    "posts": "Articles",
+    "bookmarks": "Favoris",
+    "readingHistory": "Historique de Lecture",
+    "editProfile": "Modifier le Profil",
+    "joined": "Inscrit depuis",
+    "noPosts": "Pas encore d'articles",
+    "noPostsDescription": "Vous n'avez pas encore publié d'articles. Partagez vos connaissances et expériences avec la communauté !",
+    "createPost": "Créer un Nouvel Article",
+    "noBookmarks": "Pas encore de favoris",
+    "noBookmarksDescription": "Vous n'avez pas encore ajouté d'articles aux favoris. Trouvez du contenu intéressant et enregistrez-le pour plus tard.",
+    "noHistory": "Pas d'historique de lecture",
+    "noHistoryDescription": "Vous n'avez pas encore lu d'articles. Commencez à explorer pour construire votre historique de lecture."
+  },
+  "history": {
+    "empty": "Pas encore d'historique de lecture",
+    "emptyDescription": "Les articles que vous lisez apparaîtront ici. Commencez à explorer pour construire votre historique de lecture.",
+    "exploreArticles": "Explorer les Articles"
+  },
+  "error": {
+    "notFound": "Page Non Trouvée",
+    "notFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'Accueil"
+  }
+}

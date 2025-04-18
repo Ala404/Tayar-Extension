@@ -1,0 +1,63 @@
+{
+  "common": {
+    "myFeed": "My Feed",
+    "following": "Following",
+    "explore": "Explore",
+    "history": "History",
+    "techSources": "Tech Sources",
+    "settings": "Settings",
+    "customFeeds": "Custom Feeds",
+    "bookmarks": "Bookmarks",
+    "popularTags": "Popular Tags",
+    "newPost": "New Post",
+    "search": "Search for topics, articles, or sources...",
+    "notifications": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "viewAll": "View all",
+    "loadMore": "Load More Articles",
+    "clearHistory": "Clear History"
+  },
+  "article": {
+    "readTime": "{{count}} min read",
+    "comments": "Comments",
+    "noComments": "No comments yet",
+    "leaveComment": "Leave a comment...",
+    "share": "Share",
+    "bookmark": "Bookmark",
+    "removeBookmark": "Remove Bookmark",
+    "readMore": "Read More"
+  },
+  "feed": {
+    "sortBy": "Sort by",
+    "sortAll": "All",
+    "sortPopular": "Popular",
+    "sortRecent": "Recent",
+    "refresh": "Refresh",
+    "empty": "No articles found",
+    "emptyDescription": "Try adjusting your filters or search terms"
+  },
+  "profile": {
+    "posts": "Posts",
+    "bookmarks": "Bookmarks",
+    "readingHistory": "Reading History",
+    "editProfile": "Edit Profile",
+    "joined": "Joined",
+    "noPosts": "No posts yet",
+    "noPostsDescription": "You haven't published any posts yet. Share your knowledge and experiences with the community!",
+    "createPost": "Create New Post",
+    "noBookmarks": "No bookmarks yet",
+    "noBookmarksDescription": "You haven't bookmarked any articles yet. Find interesting content and save it for later.",
+    "noHistory": "No reading history",
+    "noHistoryDescription": "You haven't read any articles yet. Start exploring to build your reading history."
+  },
+  "history": {
+    "empty": "No reading history yet",
+    "emptyDescription": "Articles you read will appear here. Start exploring to build your reading history.",
+    "exploreArticles": "Explore Articles"
+  },
+  "error": {
+    "notFound": "Page Not Found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  }
+}
