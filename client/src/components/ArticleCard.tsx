@@ -96,13 +96,13 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
       }));
       
       toast({
-        title: "Article liked",
-        description: "You liked this article"
+        title: t('common.articleLiked'),
+        description: t('common.youLikedArticle')
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to like article",
+        title: t('common.error'),
+        description: t('common.likeUpdateFailed'),
         variant: "destructive"
       });
     }
@@ -195,7 +195,7 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
               variant="ghost" 
               size="icon" 
               className="text-gray-500 hover:text-secondary transition-colors p-1"
-              title="Share Article"
+              title={t('common.shareArticle')}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -208,8 +208,8 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
                 } else {
                   navigator.clipboard.writeText(article.url || window.location.origin + `/article/${article.id}`);
                   toast({
-                    title: "Link copied",
-                    description: "Article link copied to clipboard"
+                    title: t('common.linkCopied'),
+                    description: t('common.articleLinkCopied')
                   });
                 }
               }}

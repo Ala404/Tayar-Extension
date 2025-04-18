@@ -15,7 +15,22 @@
     "markAllAsRead": "Mark all as read",
     "viewAll": "View all",
     "loadMore": "Load More Articles",
-    "clearHistory": "Clear History"
+    "clearHistory": "Clear History",
+    "authRequired": "Authentication required",
+    "loginToBookmark": "Please login to bookmark articles",
+    "loginToLike": "Please login to like articles",
+    "articleBookmarked": "Article bookmarked",
+    "articleAddedToBookmarks": "This article has been added to your bookmarks",
+    "bookmarkRemoved": "Bookmark removed",
+    "articleRemovedFromBookmarks": "This article has been removed from your bookmarks",
+    "error": "Error",
+    "bookmarkUpdateFailed": "Failed to update bookmark",
+    "likeUpdateFailed": "Failed to like article",
+    "articleLiked": "Article liked",
+    "youLikedArticle": "You liked this article",
+    "linkCopied": "Link copied",
+    "articleLinkCopied": "Article link copied to clipboard",
+    "shareArticle": "Share Article"
   },
   "article": {
     "readTime": "{{count}} min read",
