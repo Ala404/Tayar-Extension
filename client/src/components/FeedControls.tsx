@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Sliders, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SortOption, ViewMode } from '@/types';
+import { useTranslation } from 'react-i18next';
 
 interface FeedControlsProps {
   title: string;
@@ -11,6 +12,7 @@ interface FeedControlsProps {
 }
 
 export function FeedControls({ title, onSortChange, onRefresh, currentSort }: FeedControlsProps) {
+  const { t } = useTranslation();
   const [isRefreshing, setIsRefreshing] = useState(false);
   
   const handleRefresh = () => {
@@ -27,7 +29,7 @@ export function FeedControls({ title, onSortChange, onRefresh, currentSort }: Fe
           variant="ghost" 
           size="icon" 
           className="ml-4 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" 
-          title="Feed settings"
+          title={t('feed.sortBy')}
         >
           <Sliders className="w-5 h-5" />
         </Button>
@@ -35,7 +37,7 @@ export function FeedControls({ title, onSortChange, onRefresh, currentSort }: Fe
           variant="ghost" 
           size="icon" 
           className="ml-2 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" 
-          title="Refresh feed"
+          title={t('feed.refresh')}
           onClick={handleRefresh}
           disabled={isRefreshing}
         >

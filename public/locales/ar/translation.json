@@ -15,7 +15,22 @@
     "markAllAsRead": "تعليم الكل كمقروء",
     "viewAll": "عرض الكل",
     "loadMore": "تحميل المزيد من المقالات",
-    "clearHistory": "مسح التاريخ"
+    "clearHistory": "مسح التاريخ",
+    "authRequired": "المصادقة مطلوبة",
+    "loginToBookmark": "يرجى تسجيل الدخول لإضافة المقالات للمفضلة",
+    "loginToLike": "يرجى تسجيل الدخول للإعجاب بالمقالات",
+    "articleBookmarked": "تمت إضافة المقال للمفضلة",
+    "articleAddedToBookmarks": "تمت إضافة هذا المقال إلى المفضلة",
+    "bookmarkRemoved": "تمت إزالة المقال من المفضلة",
+    "articleRemovedFromBookmarks": "تمت إزالة هذا المقال من المفضلة",
+    "error": "خطأ",
+    "bookmarkUpdateFailed": "فشل تحديث المفضلة",
+    "likeUpdateFailed": "فشل تحديث الإعجاب",
+    "articleLiked": "تم الإعجاب بالمقال",
+    "youLikedArticle": "لقد أعجبت بهذا المقال",
+    "linkCopied": "تم نسخ الرابط",
+    "articleLinkCopied": "تم نسخ رابط المقال إلى الحافظة",
+    "shareArticle": "مشاركة المقال"
   },
   "article": {
     "readTime": "{{count}} دقيقة للقراءة",

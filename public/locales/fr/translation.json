@@ -15,7 +15,22 @@
     "markAllAsRead": "Marquer tout comme lu",
     "viewAll": "Voir tout",
     "loadMore": "Charger Plus d'Articles",
-    "clearHistory": "Effacer l'Historique"
+    "clearHistory": "Effacer l'Historique",
+    "authRequired": "Authentification requise",
+    "loginToBookmark": "Veuillez vous connecter pour ajouter aux favoris",
+    "loginToLike": "Veuillez vous connecter pour aimer les articles",
+    "articleBookmarked": "Article ajouté aux favoris",
+    "articleAddedToBookmarks": "Cet article a été ajouté à vos favoris",
+    "bookmarkRemoved": "Favori supprimé",
+    "articleRemovedFromBookmarks": "Cet article a été retiré de vos favoris",
+    "error": "Erreur",
+    "bookmarkUpdateFailed": "Échec de la mise à jour des favoris",
+    "likeUpdateFailed": "Échec de l'action J'aime",
+    "articleLiked": "Article aimé",
+    "youLikedArticle": "Vous avez aimé cet article",
+    "linkCopied": "Lien copié",
+    "articleLinkCopied": "Lien de l'article copié dans le presse-papiers",
+    "shareArticle": "Partager l'article"
   },
   "article": {
     "readTime": "{{count}} min de lecture",
