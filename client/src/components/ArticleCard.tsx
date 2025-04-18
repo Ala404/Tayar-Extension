@@ -147,9 +147,21 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
           <Link href={`/article/${article.id}`}>{article.title}</Link>
         </h3>
         
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
           {article.description}
         </p>
+        
+        {article.url && (
+          <a 
+            href={article.url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block text-xs text-secondary hover:underline mb-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Read original article at {article.source.name}
+          </a>
+        )}
         
         <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
           <div className="flex items-center space-x-4">
@@ -181,6 +193,24 @@ export function ArticleCard({ article, userId, className = '' }: ArticleCardProp
               variant="ghost" 
               size="icon" 
               className="text-gray-500 hover:text-secondary transition-colors p-1"
+              title="Share Article"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (navigator.share) {
+                  navigator.share({
+                    title: article.title,
+                    text: article.description,
+                    url: article.url || window.location.origin + `/article/${article.id}`
+                  }).catch(err => console.log('Error sharing', err));
+                } else {
+                  navigator.clipboard.writeText(article.url || window.location.origin + `/article/${article.id}`);
+                  toast({
+                    title: "Link copied",
+                    description: "Article link copied to clipboard"
+                  });
+                }
+              }}
             >
               <Share2 className="w-4 h-4" />
             </Button>

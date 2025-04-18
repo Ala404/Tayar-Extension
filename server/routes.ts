@@ -12,14 +12,15 @@ import {
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
 
-  // Get all articles with pagination
+  // Get all articles with pagination and search
   app.get('/api/articles', async (req, res) => {
     try {
       const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
       const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
       const userId = req.query.userId ? parseInt(req.query.userId as string) : undefined;
+      const search = req.query.search as string | undefined;
       
-      const articles = await storage.getArticles({ limit, offset });
+      const articles = await storage.getArticles({ limit, offset, search });
       
       res.json(articles);
     } catch (error) {

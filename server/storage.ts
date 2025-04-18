@@ -18,7 +18,7 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
 
   // Article operations
-  getArticles(options?: { limit?: number; offset?: number }): Promise<ArticleWithRelations[]>;
+  getArticles(options?: { limit?: number; offset?: number; search?: string }): Promise<ArticleWithRelations[]>;
   getArticleById(id: number): Promise<ArticleWithRelations | undefined>;
   getArticlesByTag(tagName: string): Promise<ArticleWithRelations[]>;
   createArticle(article: InsertArticle): Promise<Article>;
@@ -123,10 +123,22 @@ export class MemStorage implements IStorage {
   }
 
   // Article operations
-  async getArticles(options?: { limit?: number; offset?: number }): Promise<ArticleWithRelations[]> {
+  async getArticles(options?: { limit?: number; offset?: number; search?: string }): Promise<ArticleWithRelations[]> {
     let articleList = Array.from(this.articles.values());
     const offset = options?.offset || 0;
     const limit = options?.limit || articleList.length;
+    const search = options?.search?.toLowerCase();
+    
+    // Apply search filter if provided
+    if (search) {
+      articleList = articleList.filter(article => {
+        const matchesTitle = article.title.toLowerCase().includes(search);
+        const matchesDescription = article.description.toLowerCase().includes(search);
+        const matchesContent = article.content.toLowerCase().includes(search);
+        
+        return matchesTitle || matchesDescription || matchesContent;
+      });
+    }
     
     articleList = articleList.sort((a, b) => {
       return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
